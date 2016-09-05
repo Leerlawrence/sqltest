@@ -41,8 +41,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
     protected void createDatabase(){
-        db=openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS persons(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR,address VARCHAR);");
+//        db=openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
+//        db.execSQL("CREATE TABLE IF NOT EXISTS persons(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR,address VARCHAR);");
+        db=openOrCreateDatabase("foodEatenDB", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
+
+
+
     }
 
     protected void insertIntoDB(){
@@ -53,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             return;
         }
 
-        String query = "INSERT INTO persons (name,address) VALUES('"+name+"', '"+add+"');";
+        String query = "INSERT INTO daily_entry (date,food) VALUES('"+name+"', '"+add+"');";
         db.execSQL(query);
         Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();
     }

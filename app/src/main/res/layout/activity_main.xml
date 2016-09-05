@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
 <TextView
+    android:layout_marginTop="200dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Name"
+    android:text="Date"
+    android:textSize="30dp"
+    android:textColor="#FFFFFF"
     android:id="@+id/textViewName" />
 
 <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/editTextName" />
+    android:id="@+id/editTextName"
+    android:textSize="30dp"
+    android:text="06/09/2016"
+    android:textColor="#FFFFFF" />
 
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Address"
+    android:text="Food Eaten"
+    android:textSize="30dp"
+    android:textColor="#FFFFFF"
     android:id="@+id/textViewAddress" />
 
 <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:textSize="30dp"
+    android:textColor="#FFFFFF"
     android:id="@+id/editTextAddress" />
 
 <Button
@@ -30,11 +42,12 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="Add"
+
     android:id="@+id/btnAdd" />
 
 <Button
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="View Peoples"
+    android:text="View Entries"
     android:id="@+id/btnView" />
 </LinearLayout>

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
     <!--android:background="@drawable/background">-->
 
 
@@ -18,35 +19,48 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:text="ID"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/textViewId" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/editTextId" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Date"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/textViewName" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/editTextName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:text="Food Eaten"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/textViewAddress" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
         android:id="@+id/editTextAddress" />
 
     <LinearLayout
@@ -56,33 +70,48 @@
         android:weightSum="1">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold|italic"
             android:text="Previous"
+
             android:id="@+id/btnPrev"
-            android:layout_weight="0.20" />
+            android:layout_weight="0.25" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#00FF00"
+            android:textColor="#000000"
+            android:textStyle="bold|italic"
             android:text="Save"
             android:id="@+id/btnSave"
-            android:layout_weight="0.27" />
+            android:layout_weight="0.25" />
 
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold|italic"
             android:text="Next"
             android:id="@+id/btnNext"
-            android:layout_weight="0.31" />
+            android:layout_weight="0.25" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold|italic"
+            android:text="Delete"
+            android:id="@+id/btnDelete"
+            android:layout_weight="0.25"/>
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:id="@+id/btnDelete" />
 
 </LinearLayout>

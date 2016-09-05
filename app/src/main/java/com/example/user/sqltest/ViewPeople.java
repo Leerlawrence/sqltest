@@ -14,7 +14,7 @@ package com.example.user.sqltest;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Toast;
-
+        import android.database.sqlite.SQLiteOpenHelper;
 
 public class ViewPeople extends ActionBarActivity implements View.OnClickListener {
     private EditText editTextName;
@@ -25,8 +25,8 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
     private Button btnSave;
     private Button btnDelete;
 
-    private static final String SELECT_SQL = "SELECT * FROM persons";
-
+//    private static final String SELECT_SQL = "SELECT * FROM persons";
+private static final String SELECT_SQL = "SELECT * FROM daily_entry";
     private SQLiteDatabase db;
 
     private Cursor c;
@@ -35,7 +35,7 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_people);
-        openDatabase();
+        _openDatabase();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
         editTextName = (EditText) findViewById(R.id.editTextName);
@@ -56,8 +56,10 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
         showRecords();
     }
 
-    protected void openDatabase() {
-        db = openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
+    protected void _openDatabase() {
+        //db = openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
+        db = openOrCreateDatabase("foodDB", Context.MODE_PRIVATE, null);
+
     }
 
     protected void showRecords() {
@@ -90,7 +92,9 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
         String add = editTextAdd.getText().toString().trim();
         String id = editTextId.getText().toString().trim();
 
-        String sql = "UPDATE persons SET name='" + name + "', address='" + add + "' WHERE id=" + id + ";";
+        String sql = "UPDATE daily_entry SET date'" + name + "', food ='" + add + "' WHERE id=" + id + ";";
+//        String sql = "UPDATE persons SET name='" + name + "', address='" + add + "' WHERE id=" + id + ";";
+
 
         if (name.equals("") || add.equals("")) {
             Toast.makeText(getApplicationContext(), "You cannot save blank values", Toast.LENGTH_LONG).show();
@@ -103,6 +107,10 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
         c.moveToPosition(Integer.parseInt(id));
     }
 
+
+
+
+
     private void deleteRecord() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Are you sure you want delete this person?");
@@ -113,7 +121,7 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
                     public void onClick(DialogInterface arg0, int arg1) {
                         String id = editTextId.getText().toString().trim();
 
-                        String sql = "DELETE FROM persons WHERE id=" + id + ";";
+                        String sql = "DELETE FROM daily_entry WHERE id=" + id + ";";
                         db.execSQL(sql);
                         Toast.makeText(getApplicationContext(), "Record Deleted", Toast.LENGTH_LONG).show();
                         c = db.rawQuery(SELECT_SQL,null);
@@ -155,6 +163,12 @@ public class ViewPeople extends ActionBarActivity implements View.OnClickListene
 
 //        return super.onOptionsItemSelected(item);
 //    }
+
+    private void showMain(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     public void onClick(View v) {
