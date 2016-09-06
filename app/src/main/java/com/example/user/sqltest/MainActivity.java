@@ -5,6 +5,7 @@ package com.example.user.sqltest;
         import android.database.sqlite.SQLiteDatabase;
         import android.support.v7.app.ActionBarActivity;
         import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
@@ -13,7 +14,7 @@ package com.example.user.sqltest;
         import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName;
     private EditText editTextAdd;

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">sql test</string>
-    <string name="title_activity_view_people">Food Planner</string>
+    <string name="title_activity_view_people">Food Plan</string>
 </resources>
