@@ -17,10 +17,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ListActivity"
+            android:label="List View"
+            android:parentActivityName="com.example.app.MainActivity">
+
+        </activity>
+
         <activity
             android:name=".ViewPeople"
             android:label="@string/title_activity_view_people"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".com.example.app.MainActivity">
 
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->

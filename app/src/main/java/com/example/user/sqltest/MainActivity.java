@@ -6,6 +6,7 @@ package com.example.user.sqltest;
         import android.support.v7.app.ActionBarActivity;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
+        import android.util.Log;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextAdd;
     private Button btnAdd;
     private Button btnView;
+    private Button btnList;
+
 
     private SQLiteDatabase db;
 
@@ -28,24 +31,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createDatabase();
+//        createDatabase();
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAdd = (EditText) findViewById(R.id.editTextAddress);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnView = (Button) findViewById(R.id.btnView);
+        btnList = (Button) findViewById(R.id.btnList);
+
 
         btnAdd.setOnClickListener(this);
         btnView.setOnClickListener(this);
+        btnList.setOnClickListener(this);
+
+
     }
 
 
-    protected void createDatabase(){
+   protected void createDatabase(){
 //        db=openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
 //        db.execSQL("CREATE TABLE IF NOT EXISTS persons(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR,address VARCHAR);");
-        db=openOrCreateDatabase("foodEatenDB", Context.MODE_PRIVATE, null);
+      // / db=openOrCreateDatabase("PersonaDB", Context.MODE_PRIVATE, null);
+      // db.execSQL("CREATE TABLE IF NOT EXISTS persons(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR,address VARCHAR);");
+
+
+     db=openOrCreateDatabase("foodEatenDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
+     // db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
 
 
 
@@ -54,13 +67,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void insertIntoDB(){
         String name = editTextName.getText().toString().trim();
         String add = editTextAdd.getText().toString().trim();
+      //  if(name.equals("") || add.equals("")){
         if(name.equals("") || add.equals("")){
+
+
+
             Toast.makeText(getApplicationContext(),"Please fill all fields", Toast.LENGTH_LONG).show();
             return;
         }
-
-        String query = "INSERT INTO daily_entry (date,food) VALUES('"+name+"', '"+add+"');";
+        Log.d("name", name);
+        String query = "INSERT INTO daily_entry (name,address) VALUES('" + name + "', '" + add + "');";
+        //String query = "INSERT INTO daily_entry (date,food) VALUES('" + name + "', '" + add + "');";
         db.execSQL(query);
+
         Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();
     }
 
@@ -70,6 +89,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finish();
     }
 
+    private void showList(){
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
     @Override
     public void onClick(View v) {
         if(v == btnAdd){
@@ -78,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v==btnView){
             showPeoples();
         }
+
+        if(v==btnList){
+            showList();
+        }
+
     }
 
 

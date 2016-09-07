@@ -8,13 +8,12 @@ package com.example.user.sqltest;
         import android.database.sqlite.SQLiteDatabase;
         import android.support.v7.app.ActionBarActivity;
         import android.os.Bundle;
-        import android.view.Menu;
-        import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Toast;
-        import android.database.sqlite.SQLiteOpenHelper;
+
+        import java.util.ArrayList;
 
 public class ViewPeople extends ActionBarActivity implements View.OnClickListener {
     private EditText editTextName;
@@ -34,7 +33,7 @@ private static final String SELECT_SQL = "SELECT * FROM daily_entry";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_people);
+        setContentView(R.layout.activity_view_records);
         _openDatabase();
 
         editTextId = (EditText) findViewById(R.id.editTextId);
@@ -62,6 +61,12 @@ private static final String SELECT_SQL = "SELECT * FROM daily_entry";
 
     }
 
+
+
+
+
+
+
     protected void showRecords() {
         String id = c.getString(0);
         String name = c.getString(1);
@@ -70,6 +75,12 @@ private static final String SELECT_SQL = "SELECT * FROM daily_entry";
         editTextName.setText(name);
         editTextAdd.setText(add);
     }
+
+    protected void moveNextList() {
+        if (!c.isLast())
+            c.moveToNext();
+    }
+
 
     protected void moveNext() {
         if (!c.isLast())
