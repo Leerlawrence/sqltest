@@ -13,6 +13,12 @@ package com.example.user.sqltest;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Toast;
+import android.widget.DatePicker;
+
+        import java.text.SimpleDateFormat;
+        import java.util.Calendar;
+        import java.util.Date;
+        import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,10 +37,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        createDatabase();
+        createDatabase();
+
+        final Calendar cal = Calendar.getInstance();
+        int mYear= cal.get(Calendar.YEAR);
+        int mMonth=cal.get(Calendar.MONTH);
+        int mDay=cal.get(Calendar.DAY_OF_MONTH);
+
+
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAdd = (EditText) findViewById(R.id.editTextAddress);
+
+        String date = new SimpleDateFormat("dd/MMM/yyyy").format(new Date());
+
+
+        editTextName.setText(date);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnView = (Button) findViewById(R.id.btnView);
@@ -55,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       // / db=openOrCreateDatabase("PersonaDB", Context.MODE_PRIVATE, null);
       // db.execSQL("CREATE TABLE IF NOT EXISTS persons(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR,address VARCHAR);");
 
-
-     db=openOrCreateDatabase("foodEatenDB", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
+       db=openOrCreateDatabase("foodDB", Context.MODE_PRIVATE, null);
+     //db=openOrCreateDatabase("foodEatenDB", Context.MODE_PRIVATE, null);
+       db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
      // db.execSQL("CREATE TABLE IF NOT EXISTS daily_entry(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, date VARCHAR,food VARCHAR);");
 
 
@@ -75,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(),"Please fill all fields", Toast.LENGTH_LONG).show();
             return;
         }
-        Log.d("name", name);
-        String query = "INSERT INTO daily_entry (name,address) VALUES('" + name + "', '" + add + "');";
-        //String query = "INSERT INTO daily_entry (date,food) VALUES('" + name + "', '" + add + "');";
+        //Log.d("name", name);
+        //String query = "INSERT INTO daily_entry (name,address) VALUES('" + name + "', '" + add + "');";
+        String query = "INSERT INTO daily_entry (date,food) VALUES('" + name + "', '" + add + "');";
         db.execSQL(query);
 
         Toast.makeText(getApplicationContext(),"Saved Successfully", Toast.LENGTH_LONG).show();
@@ -86,13 +104,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showPeoples(){
         Intent intent = new Intent(this,ViewPeople.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
     private void showList(){
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
-        finish();
+       // finish();
     }
 
 

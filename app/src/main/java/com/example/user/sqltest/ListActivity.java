@@ -51,6 +51,8 @@ public class ListActivity extends AppCompatActivity {
 
     protected void _openDatabase() {
         //db = openOrCreateDatabase("PersonDB", Context.MODE_PRIVATE, null);
+
+
         db = openOrCreateDatabase("foodDB", Context.MODE_PRIVATE, null);
 
     }
@@ -58,6 +60,7 @@ public class ListActivity extends AppCompatActivity {
     protected ArrayList<String> showAllRecords() {
 
         ArrayList <String> fullList = new ArrayList <String> ();
+
 
         while (!c.isLast()) {
             String id = c.getString(0);

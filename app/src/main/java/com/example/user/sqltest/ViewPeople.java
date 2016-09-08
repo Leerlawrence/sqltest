@@ -8,6 +8,7 @@ package com.example.user.sqltest;
         import android.database.sqlite.SQLiteDatabase;
         import android.support.v7.app.ActionBarActivity;
         import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
@@ -15,7 +16,9 @@ package com.example.user.sqltest;
 
         import java.util.ArrayList;
 
-public class ViewPeople extends ActionBarActivity implements View.OnClickListener {
+//public class ViewPeople extends ActionBarActivity implements View.OnClickListener {
+
+    public class ViewPeople extends AppCompatActivity implements View.OnClickListener {
     private EditText editTextName;
     private EditText editTextAdd;
     private EditText editTextId;
@@ -60,11 +63,6 @@ private static final String SELECT_SQL = "SELECT * FROM daily_entry";
         db = openOrCreateDatabase("foodDB", Context.MODE_PRIVATE, null);
 
     }
-
-
-
-
-
 
 
     protected void showRecords() {

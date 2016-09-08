@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="ID"
+        android:text="Record No:"
         android:textSize="30dp"
         android:textColor="#FFFFFF"
         android:id="@+id/textViewId" />
@@ -29,8 +29,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
+        android:layout_marginLeft="40dp"
         android:textSize="30dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFFF00"
         android:id="@+id/editTextId" />
 
     <TextView
@@ -44,8 +45,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
         android:textSize="30dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFFF00"
         android:id="@+id/editTextName" />
 
     <TextView
@@ -59,8 +61,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
         android:textSize="30dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#FFFF00"
         android:id="@+id/editTextAddress" />
 
     <LinearLayout
